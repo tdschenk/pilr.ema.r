@@ -11,13 +11,22 @@ params <- ""
 cohort_activity_heatmap(data, params)
 
 
-# Testing double bar chart
+# Testing overlapping bar chart
 totals %>%
   ggvis(~day, ~total, fill = ~category, fillOpacity := 0.25) %>%
   layer_bars(stack = FALSE) %>%
   scale_nominal("fill",
                 domain = c("actual", "expected"),
-                range = c("black", "#F4F4F4")) %>%
+                range = c("darkred", "lightgray")) %>%
+  add_axis("x", title = "",
+           properties = axis_props(labels = list(angle = 45, align = "left"))) %>%
+  add_axis("y", title = "Submitted Surveys")
+
+# Testing side by side bar chart
+totals %>%
+  mutate(day_category = factor(paste(day, category))) %>%
+  ggvis(x= ~day_category, y= ~total, fill = ~category) %>%
+  layer_bars(stack = FALSE)  %>%
   add_axis("x", title = "",
            properties = axis_props(labels = list(angle = 45, align = "left"))) %>%
   add_axis("y", title = "Submitted Surveys")
