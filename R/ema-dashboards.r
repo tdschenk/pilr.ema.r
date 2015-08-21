@@ -10,14 +10,14 @@ cohort_activity_heatmap <- function(data, params, ...) {
   data$survey$day <- substring(data$survey$timestamp, 0, 10)
 
   # Create fill color spectrum based on job settings
-  heatcolors <- colorRampPalette(c("red","green"))
+  heatcolors <- colorRampPalette(c("#FFCC00","#006600"))
 
   # Calculate surveys per day per participant
   totals <- data.frame(table(data$survey$pt, data$survey$day))
   names(totals) <- c("pt", "day", "total")
 
   # Set all 0 values to black
-  totals$daycolor[totals$total == 0] = "#000000"
+  totals$daycolor[totals$total == 0] = "#FF0000"
 
   # Set other values to appropriate colors from red to green
   totals$daycolor[totals$total > 0] =
@@ -33,7 +33,7 @@ cohort_activity_heatmap <- function(data, params, ...) {
       x = prop("x", ~day, scale = "xcenter"),
       y = prop("y", ~pt, scale = "ycenter"),
       text:=~total, fontSize := 20, fill:="white", baseline:="middle", align:="center") %>%
-    scale_numeric("fill", range=c("red", "green")) %>%
+    scale_numeric("fill", range=c("#FFCC00","#00CC00")) %>%
     scale_nominal("x", padding = 0, points = FALSE) %>%
     scale_nominal("y", padding = 0, points = FALSE) %>%
     scale_nominal("x", name = "xcenter", padding = 1, points = TRUE) %>%
@@ -61,23 +61,15 @@ actual_expected_bar <- function(data, params, ...) {
 
   # Sum surveys per day over all participants
   totals <- data.frame(table(data$survey$day))
-  names(totals) <- c("day", "total")
-  totals$category <- "actual"
+  names(totals) <- c("day", "actual")
 
-  # Create matching dataframe for expected
-  totals_exp <- totals
-  totals_exp$total <- expected
-  totals_exp$category <- "expected"
-  # Merge actual and expected
-  #totals <- rbind(totals, totals_exp)
-
-  temp <- data.frame(day = totals_exp$day[(nrow(totals_exp)/2)-1], total = totals_exp$total[1])
+  # Add column for expected
+  totals$expected <- expected
 
   totals %>%
-    ggvis(~day, ~total) %>%
-    layer_bars(fill := "#E74C3C") %>%
-    layer_text(data = temp, fontSize := 25, text := "Expected") %>%
-    layer_paths(data = totals_exp, ~day, ~total, strokeWidth := 2) %>%
+    ggvis(~day, ~expected, fill = "estimated", fillOpacity := 0.15) %>%
+    layer_bars() %>%
+    layer_bars(~day, ~actual, fillOpacity := 1, fill = "actual") %>%
     add_axis("x", title = "",
              properties = axis_props(labels = list(angle = 45, align = "left"))) %>%
     add_axis("y", title = "Submitted Surveys")

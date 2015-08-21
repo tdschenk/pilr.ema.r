@@ -1,7 +1,8 @@
 Package: pilr.ema.r
 Title: PiLR EMA Dashboards
 Version: 0.0.0.9000
-Authors@R: "Tyler Schenk"
+Authors@R: c(person("Tyler Schenk", "Developer", role = c("aut", "cre"),
+		     email = "tschenk@meinergy.com"))
 Description: Contains various functions used to generate PiLR dashboards with EMA data.
 Depends: R (>= 3.2.1)
 Imports: plyr, ggvis
