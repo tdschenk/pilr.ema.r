@@ -48,6 +48,29 @@ cohort_activity_heatmap <- function(data, params, ...) {
 ## Expected calculated by maximum per day * total participants
 #' @export
 actual_expected_bar <- function(data, params, ...) {
-  install.packages("installr")
-  updateR()
+  # Subset to only survey submissions
+  data$survey <- subset(data$survey, event_type == "survey_submitted")
+
+  # Add day column to dataframe
+  data$survey$day <- substring(data$survey$timestamp, 0, 10)
+
+  # Sum surveys per day per participant
+  totals <- data.frame(table(data$survey$pt, data$survey$day))
+  # Find maximum and calculate Expected
+  expected <- max(totals$Freq) * length(unique(data$survey$pt))
+
+  # Sum surveys per day over all participants
+  totals <- data.frame(table(data$survey$day))
+  names(totals) <- c("day", "actual")
+
+  # Add column for expected
+  totals$expected <- expected
+
+  totals %>%
+    ggvis(~day, ~expected, fill = "estimated", fillOpacity := 0.15) %>%
+    layer_bars() %>%
+    layer_bars(~day, ~actual, fillOpacity := 1, fill = "actual") %>%
+    add_axis("x", title = "",
+             properties = axis_props(labels = list(angle = 45, align = "left"))) %>%
+    add_axis("y", title = "Submitted Surveys")
 }
