@@ -91,7 +91,7 @@ actual_expected_bar <- function(data, params, ...) {
     if (!nrow(totals[totals$day == g[i],])) {
       for (j in 1:length(unique(totals$pt))) {
         totals <- rbind(totals, data.frame(day = g[i],
-                                           actual = 0)
+                                           actual = 0))
       }
     }
   }
