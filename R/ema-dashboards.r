@@ -89,10 +89,8 @@ actual_expected_bar <- function(data, params, ...) {
   g <- seq(totals$day[1], totals$day[nrow(totals)], by = 1)
   for (i in 1:length(g)) {
     if (!nrow(totals[totals$day == g[i],])) {
-      for (j in 1:length(unique(totals$pt))) {
-        totals <- rbind(totals, data.frame(day = g[i],
-                                           actual = 0))
-      }
+      totals <- rbind(totals, data.frame(day = g[i],
+                                         actual = 0))
     }
   }
   totals$day <- as.factor(totals$day)
