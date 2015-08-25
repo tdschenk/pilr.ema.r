@@ -4,7 +4,7 @@
 #' @export
 cohort_activity_heatmap <- function(data, params, ...) {
   # Bind data and metadata by column
-  data$survey <- cbind(data$survey$data, data$survey$metadata)
+  #data$survey <- cbind(data$survey$data, data$survey$metadata)
 
   # Subset to only survey submissions
   data$survey <- subset(data$survey, event_type == "survey_submitted")
@@ -19,7 +19,7 @@ cohort_activity_heatmap <- function(data, params, ...) {
   totals <- data.frame(table(data$survey$pt, data$survey$day))
   names(totals) <- c("pt", "day", "total")
 
-  # Set all 0 values to black
+  # Set all 0 values to red
   totals$daycolor[totals$total == 0] = "#FF0000"
 
   # Set other values to appropriate colors from red to green
@@ -27,6 +27,21 @@ cohort_activity_heatmap <- function(data, params, ...) {
     as.character(cut(totals$total[totals$total > 0],
                      seq(0, max(totals$total, na.rm=TRUE)+0.1, length.out=11),
                      labels=heatcolors(10)))
+
+  # Add days with no surveys for any participants
+  totals$day <- as.Date(totals$day)
+  g <- seq(totals$day[1], totals$day[nrow(totals)], by = 1)
+  for (i in 1:length(g)) {
+    if (!nrow(totals[totals$day == g[i],])) {
+      for (j in 1:length(unique(totals$pt))) {
+        totals <- rbind(totals, data.frame(pt = unique(totals$pt)[j],
+                                           day = g[i],
+                                           total = 0,
+                                           daycolor = "#FF0000"))
+      }
+    }
+  }
+  totals$day <- as.factor(totals$day)
 
   # Create heatmap
   totals %>%
