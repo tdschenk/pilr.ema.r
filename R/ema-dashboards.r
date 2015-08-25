@@ -46,9 +46,10 @@ cohort_activity_heatmap <- function(data, params, ...) {
   # Sort by day
   totals <- arrange(totals, day)
   # If more than 30 days, subset to the last 30
-  if (nrow(totals) > 30) {
-    totals <- totals[nrow(totals)-30:nrow(totals),]
+  if (nrow(totals) > (30*length(unique(totals$pt)))) {
+    totals <- totals[(nrow(totals)-30*length(unique(totals$pt))):nrow(totals),]
   }
+  totals$day <- as.character(totals$day)
 
   # Create heatmap
   totals %>%
@@ -108,9 +109,10 @@ actual_expected_bar <- function(data, params, ...) {
   # Sort by day
   totals <- arrange(totals, day)
   # If more than 30 days, subset to the last 30
-  if (nrow(totals) > 30) {
-    totals <- totals[nrow(totals)-30:nrow(totals),]
+  if (nrow(totals) > (30*length(unique(totals$pt)))) {
+    totals <- totals[(nrow(totals)-30*length(unique(totals$pt))):nrow(totals),]
   }
+  totals$day <- as.character(totals$day)
 
   totals %>%
     ggvis(~day, ~expected, fill = "estimated", fillOpacity := 0.15) %>%
