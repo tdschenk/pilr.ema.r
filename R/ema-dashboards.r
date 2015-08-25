@@ -3,17 +3,20 @@
 ## (TODO) Takes in job settings (currently params$job_settings): num_colors, num_bins
 #' @export
 cohort_activity_heatmap <- function(data, params, ...) {
+  # Bind data and metadata by column
+  data$survey <- cbind(data$survey$data, data$survey$metadata)
+
   # Subset to only survey submissions
-  data$survey$data <- subset(data$survey$data, event_type == "survey_submitted")
+  data$survey <- subset(data$survey, event_type == "survey_submitted")
 
   # Add day column to dataframe
-  data$survey$data$day <- substring(data$survey$metadata$timestamp, 0, 10)
+  data$survey$day <- substring(data$survey$timestamp, 0, 10)
 
   # Create fill color spectrum based on job settings
   heatcolors <- colorRampPalette(c("#FFCC00","#006600"))
 
   # Calculate surveys per day per participant
-  totals <- data.frame(table(data$survey$metadata$pt, data$survey$data$day))
+  totals <- data.frame(table(data$survey$pt, data$survey$day))
   names(totals) <- c("pt", "day", "total")
 
   # Set all 0 values to black
@@ -48,19 +51,22 @@ cohort_activity_heatmap <- function(data, params, ...) {
 ## Expected calculated by maximum per day * total participants
 #' @export
 actual_expected_bar <- function(data, params, ...) {
+  # Bind data and metadata by column
+  data$survey <- cbind(data$survey$data, data$survey$metadata)
+
   # Subset to only survey submissions
-  data$survey$data <- subset(data$survey$data, event_type == "survey_submitted")
+  data$survey <- subset(data$survey, event_type == "survey_submitted")
 
   # Add day column to dataframe
-  data$survey$data$day <- substring(data$survey$metadata$timestamp, 0, 10)
+  data$survey$day <- substring(data$survey$timestamp, 0, 10)
 
   # Sum surveys per day per participant
-  totals <- data.frame(table(data$survey$metadata$pt, data$survey$data$day))
+  totals <- data.frame(table(data$survey$pt, data$survey$day))
   # Find maximum and calculate Expected
-  expected <- max(totals$Freq) * length(unique(data$survey$metadata$pt))
+  expected <- max(totals$Freq) * length(unique(data$survey$pt))
 
   # Sum surveys per day over all participants
-  totals <- data.frame(table(data$survey$data$day))
+  totals <- data.frame(table(data$survey$day))
   names(totals) <- c("day", "actual")
 
   # Add column for expected
