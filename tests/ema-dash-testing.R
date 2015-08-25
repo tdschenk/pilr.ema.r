@@ -10,11 +10,24 @@ params <- ""
 
 cohort_activity_heatmap(data, params)
 
+# Add days with no surveys for any participants
+totals$day <- as.Date(totals$day)
+g <- seq(totals$day[1], totals$day[nrow(totals)], by = 1)
+for (i in 1:length(g)) {
+  if (!nrow(totals[totals$day == g[i],])) {
+    for (j in 1:length(unique(totals$pt))) {
+      totals <- rbind(totals, data.frame(pt = unique(totals$pt)[j],
+                                         day = g[i],
+                                         total = 0,
+                                         daycolor = "#FF0000"))
+    }
+  }
+}
+totals$day <- as.factor(totals$day)
 
 totals %>%
   ggvis(~day, ~pt, fill := ~daycolor) %>%
   layer_rects(height = band(), width = band()) %>%
-  scale_datetime("x", nice="day")
   layer_text(
     x = prop("x", ~day, scale = "xcenter"),
     y = prop("y", ~pt, scale = "ycenter"),
@@ -33,6 +46,9 @@ totals %>%
   g <- seq(start(zym), end(zym), by = 1/12)
   na.locf(zym, xout = g)
 
-  x <- zoo(1:10,Sys.Date()-10:1)[c(1,3,5,7,10)]
-  empty <- zoo(order.by=seq.Date(head(index(x),1),tail(index(x),1),by="days"))
-  na.locf(merge(x,empty))
+  zym <- zoo(1:5, as.Date("2000-01-01") + c(0, 1, 2, 4, 5))
+  g <- seq(start(zym), end(zym), by = 1)
+  na.locf(zym, xout = g)
+
+  zym <- zoo(1:length(unique(totals$day)), as.Date())
+  g <- seq(totals$day[1], totals$day[nrow(totals)], by = 1)
