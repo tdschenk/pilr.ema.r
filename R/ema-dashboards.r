@@ -4,16 +4,16 @@
 #' @export
 cohort_activity_heatmap <- function(data, params, ...) {
   # Subset to only survey submissions
-  data$survey <- subset(data$survey, event_type == "survey_submitted")
+  data$survey$data <- subset(data$survey$data, event_type == "survey_submitted")
 
   # Add day column to dataframe
-  data$survey$day <- substring(data$survey$timestamp, 0, 10)
+  data$survey$data$day <- substring(data$survey$metadata$timestamp, 0, 10)
 
   # Create fill color spectrum based on job settings
   heatcolors <- colorRampPalette(c("#FFCC00","#006600"))
 
   # Calculate surveys per day per participant
-  totals <- data.frame(table(data$survey$pt, data$survey$day))
+  totals <- data.frame(table(data$survey$metadata$pt, data$survey$data$day))
   names(totals) <- c("pt", "day", "total")
 
   # Set all 0 values to black
@@ -49,18 +49,18 @@ cohort_activity_heatmap <- function(data, params, ...) {
 #' @export
 actual_expected_bar <- function(data, params, ...) {
   # Subset to only survey submissions
-  data$survey <- subset(data$survey, event_type == "survey_submitted")
+  data$survey$data <- subset(data$survey$data, event_type == "survey_submitted")
 
   # Add day column to dataframe
-  data$survey$day <- substring(data$survey$timestamp, 0, 10)
+  data$survey$data$day <- substring(data$survey$metadata$timestamp, 0, 10)
 
   # Sum surveys per day per participant
-  totals <- data.frame(table(data$survey$pt, data$survey$day))
+  totals <- data.frame(table(data$survey$metadata$pt, data$survey$data$day))
   # Find maximum and calculate Expected
-  expected <- max(totals$Freq) * length(unique(data$survey$pt))
+  expected <- max(totals$Freq) * length(unique(data$survey$metadata$pt))
 
   # Sum surveys per day over all participants
-  totals <- data.frame(table(data$survey$day))
+  totals <- data.frame(table(data$survey$data$day))
   names(totals) <- c("day", "actual")
 
   # Add column for expected
