@@ -4,7 +4,7 @@
 #' @export
 cohort_activity_heatmap <- function(data, params, ...) {
   # Bind data and metadata by column
-  #data$survey <- cbind(data$survey$data, data$survey$metadata)
+  data$survey <- cbind(data$survey$data, data$survey$metadata)
 
   # Subset to only survey submissions
   data$survey <- subset(data$survey, event_type == "survey_submitted")
