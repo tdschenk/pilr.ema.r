@@ -49,6 +49,7 @@ cohort_activity_heatmap <- function(data, params, ...) {
                      seq(0, max(totals$total, na.rm=TRUE)+0.1, length.out=11),
                      labels=heatcolors(10)))
 
+  totals$day <- as.character(totals$day)
   # Create heatmap
   totals %>%
     ggvis(~day, ~pt, fill := ~daycolor) %>%
