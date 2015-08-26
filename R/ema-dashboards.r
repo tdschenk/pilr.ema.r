@@ -50,6 +50,7 @@ cohort_activity_heatmap <- function(data, params, ...) {
                      labels=heatcolors(10)))
 
   totals$day <- as.character(totals$day)
+  totals <- arrange(totals, day)
   # Create heatmap
   totals %>%
     ggvis(~day, ~pt, fill := ~daycolor) %>%
@@ -100,7 +101,6 @@ actual_expected_bar <- function(data, params, ...) {
                                          actual = 0))
     }
   }
-  totals$day <- as.character(totals$day)
 
   # Add column for expected
   totals$expected <- expected
@@ -111,6 +111,8 @@ actual_expected_bar <- function(data, params, ...) {
     totals <- totals[as.Date(totals$day) %in% include_days,]
   }
 
+  totals$day <- as.character(totals$day)
+  totals$day <- arrange(totals, day)
   totals %>%
     ggvis(~day, ~expected, fill = "estimated", fillOpacity := 0.15) %>%
     layer_bars() %>%
