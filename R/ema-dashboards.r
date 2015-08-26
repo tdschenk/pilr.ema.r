@@ -41,7 +41,7 @@ cohort_activity_heatmap <- function(data, params, ...) {
       }
     }
   }
-  totals$day <- as.factor(totals$day)
+  totals$day <- as.character(totals$day)
 
   # If more than 30 days, subset to last 30
   if (length(unique(totals$day)) > 30) {
@@ -99,7 +99,7 @@ actual_expected_bar <- function(data, params, ...) {
                                          actual = 0))
     }
   }
-  totals$day <- as.factor(totals$day)
+  totals$day <- as.character(totals$day)
 
   # Add column for expected
   totals$expected <- expected
