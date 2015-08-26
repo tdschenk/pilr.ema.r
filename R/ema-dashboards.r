@@ -112,7 +112,7 @@ actual_expected_bar <- function(data, params, ...) {
   }
 
   totals$day <- as.character(totals$day)
-  totals$day <- arrange(totals, day)
+  totals <- arrange(totals, day)
   totals %>%
     ggvis(~day, ~expected, fill = "estimated", fillOpacity := 0.15) %>%
     layer_bars() %>%
