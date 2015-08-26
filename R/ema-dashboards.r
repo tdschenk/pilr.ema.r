@@ -19,6 +19,9 @@ cohort_activity_heatmap <- function(data, params, ...) {
   totals <- data.frame(table(data$survey$pt, data$survey$day))
   names(totals) <- c("pt", "day", "total")
 
+  # Set all 0 values to red
+  totals$daycolor[totals$total == 0] = "#FF0000"
+
   # Add days with no surveys for any participants
   totals$day <- as.Date(totals$day)
   g <- seq(totals$day[1], totals$day[nrow(totals)], by = 1)
@@ -39,9 +42,6 @@ cohort_activity_heatmap <- function(data, params, ...) {
     include_days <- g[(length(g)-29):length(g)]
     totals <- totals[as.Date(totals$day) %in% include_days,]
   }
-
-  # Set all 0 values to red
-  totals$daycolor[totals$total == 0] = "#FF0000"
 
   # Set other values to appropriate colors from red to green
   totals$daycolor[totals$total > 0] =
