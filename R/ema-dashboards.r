@@ -57,7 +57,7 @@ cohort_activity_heatmap <- function(data, params, ...) {
     layer_text(
       x = prop("x", ~day, scale = "xcenter"),
       y = prop("y", ~pt, scale = "ycenter"),
-      text:=~total, fontSize := 20, fill:="white", baseline:="middle", align:="center") %>%
+      text:=~total, fontSize := 15, fill:="white", baseline:="middle", align:="center") %>%
     scale_numeric("fill", range=c("#FFCC00","#00CC00")) %>%
     scale_nominal("x", padding = 0, points = FALSE) %>%
     scale_nominal("y", padding = 0, points = FALSE) %>%
