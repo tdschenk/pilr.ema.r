@@ -3,7 +3,6 @@
 ## (TODO) Takes in job settings (currently params$job_settings): num_colors, num_bins
 #' @export
 cohort_activity_heatmap <- function(data, params, ...) {
-  stop(print(params$dashboard_params))
 
   # Bind data and metadata by column
   data$survey <- cbind(data$survey$data, data$survey$metadata)
