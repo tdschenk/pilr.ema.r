@@ -6,7 +6,7 @@ options(pilr_default_access_code = "40c17cbc-0df2-497d-9fbd-83a8b92cf3e6")
 
 data <- list(survey = read_pilr(data_set = "pilrhealth:mobile:survey_data", schema = "1",
                                 query_params = list(group = "template_assignments_enrolled")))
-params <- ""
+params <- list(params = list(date = list(gt = "2015-06-19", lt = "2015-09-02")))
 
 cohort_activity_heatmap(data, params)
 

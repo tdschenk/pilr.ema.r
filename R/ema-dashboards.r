@@ -24,7 +24,7 @@ cohort_activity_heatmap <- function(data, params, ...) {
 
   # Add days with no surveys for any participants
   totals$day <- as.Date(totals$day)
-  g <- seq(totals$day[1], totals$day[nrow(totals)], by = 1)
+  g <- seq(as.Date(params$params$date$gt), as.Date(params$params$date$lt), by = 1)
   for (i in 1:length(g)) {
     if (!nrow(totals[totals$day == g[i],])) {
       for (j in 1:length(unique(totals$pt))) {
@@ -94,7 +94,7 @@ actual_expected_bar <- function(data, params, ...) {
 
   # Add days with no surveys for any participants
   totals$day <- as.Date(totals$day)
-  g <- seq(totals$day[1], totals$day[nrow(totals)], by = 1)
+  g <- seq(as.Date(params$params$date$gt), as.Date(params$params$date$lt), by = 1)
   for (i in 1:length(g)) {
     if (!nrow(totals[totals$day == g[i],])) {
       totals <- rbind(totals, data.frame(day = g[i],
