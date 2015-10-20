@@ -166,6 +166,7 @@ surveys_leaflet_map_2 <- function(data, params, ...) {
 }
 
 ema_html_test <- function(data, params, ...) {
+  data$survey <- cbind(data$survey$data, data$survey$metadata)
   data$survey <- subset(data$survey, event_type == "survey_submitted")
 
   pt_counts <- count(data$survey, 'pt')
