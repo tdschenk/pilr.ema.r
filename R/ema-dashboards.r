@@ -171,5 +171,5 @@ ema_html_test <- function(data, params, ...) {
 
   pt_counts <- count(data$survey, 'pt')
 
-  print(xtable(pt_counts), type = "html")
+  print(xtable(pt_counts), type = "html", comment = FALSE)
 }
