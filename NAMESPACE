@@ -1,3 +1,6 @@
 exportPattern("^[^\\.]")
 export(cohort_activity_heatmap)
 export(actual_expected_bar)
+export(surveys_leaflet_map)
+export(surveys_leaflet_map_2)
+export(ema_html_test)

@@ -9,6 +9,7 @@ data <- list(survey = read_pilr(data_set = "pilrhealth:mobile:survey_data", sche
 params <- list(params = list(date = list(gt = "2015-06-19", lt = "2015-09-02")))
 
 cohort_activity_heatmap(data, params)
+surveys_leaflet_map(data, params)
 
 # Add days with no surveys for any participants
 totals$day <- as.Date(totals$day)
@@ -52,3 +53,8 @@ totals %>%
 
   zym <- zoo(1:length(unique(totals$day)), as.Date())
   g <- seq(totals$day[1], totals$day[nrow(totals)], by = 1)
+
+### Leaflet Stuff
+  leaflet(test) %>% addTiles() %>% addMarkers(
+    clusterOptions = markerClusterOptions()
+  )

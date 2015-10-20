@@ -71,7 +71,7 @@ cohort_activity_heatmap <- function(data, params, ...) {
     add_axis("x", title = "",
              properties = axis_props(labels = list(angle = 45, align = "left"))) %>%
     add_axis("y", title = "Participant") %>%
-    hide_legend("fill")
+    hide_legend("fill") %>% set_options(renderer=NULL)
 }
 
 ### Actual vs Expected Per Day Bar Chart ###
@@ -129,4 +129,46 @@ actual_expected_bar <- function(data, params, ...) {
     add_axis("x", title = "",
              properties = axis_props(labels = list(angle = 45, align = "left"))) %>%
     add_axis("y", title = "Submitted Surveys")
+}
+
+### Leaflet Map Plot ###
+##
+#' @export
+surveys_leaflet_map <- function(data, params, ...) {
+  # Bind data and metadata by column
+  #data$survey <- cbind(data$survey$data, data$survey$metadata)
+
+  # Subset to only survey submissions
+  data$survey <- subset(data$survey, event_type == "survey_submitted")
+
+  # Rename columns to lat/lon for leaflet pkg
+  data$survey <- rename(data$survey, c("more_lat" = "lat", "more_lon" = "lon"))
+
+  # Generate map
+  leaflet(data$survey) %>% addTiles() %>% addMarkers(
+    clusterOptions = markerClusterOptions(),
+    popup = ~htmlEscape(pt)
+  )
+}
+
+surveys_leaflet_map_2 <- function(data, params, ...) {
+  # Subset to only survey submissions
+  data$survey <- subset(data$survey, event_type == "survey_submitted")
+
+  # Rename columns to lat/lon for leaflet pkg
+  data$survey <- rename(data$survey, c("more_lat" = "lat", "more_lon" = "lon"))
+
+  # Generate map
+  leaflet(data$survey) %>% addTiles() %>% addMarkers(
+    clusterOptions = markerClusterOptions(),
+    popup = ~htmlEscape(pt)
+  )
+}
+
+ema_html_test <- function(data, params, ...) {
+  data$survey <- subset(data$survey, event_type == "survey_submitted")
+
+  pt_counts <- count(data$survey, 'pt')
+
+  print(xtable(pt_counts), type = "html")
 }
