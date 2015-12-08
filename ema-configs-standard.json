@@ -1,0 +1,796 @@
+{
+  "definition_type": "instrument_content",
+  "instrument_code": "ema_ots",
+  "version": 1,
+  "code": "ema-configs-standard_surveys",
+  "name": "EMA Configurations (Standard Surveys)",
+  "contents": 
+  [
+    {
+      "configurations": 
+      [
+        {
+          "name": "Survey Collection",
+          "code": "56979",
+          "cardstacks": 
+          [
+            {
+              "id": "55d344dbe4b07e45d5908f17",
+              "name": "Home",
+              "code": "tab1",
+              "type": "tab",
+              "icon": "750-home",
+              "cards": 
+              [
+                {
+                  "card_type": "instruction",
+                  "section": 1,
+                  "order": 1,
+                  "data": {
+                    "title": "Welcome!",
+                    "text": "This is an example of a simple card to be shown on a tab, when the app is opened.  You can edit the cards that show on this tab, add more, and rearrange the order.",
+                    "icon": "icon-smile",
+                    "code": "tab1_sample",
+                    "color": "428bca"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "55d344dbe4b07e45d5908f18",
+              "name": "Tasks",
+              "code": "tab2",
+              "type": "tab",
+              "icon": "887-notepad",
+              "cards": 
+              [
+                {
+                  "card_type": "instruction",
+                  "section": 1,
+                  "order": 1,
+                  "data": {
+                    "title": "A second tab",
+                    "text": "The app is designed to have two tabs on the main page.  By default, their labels are 'Home' and 'Tasks', but you can edit the tab names and icons (for iOS only) to fit your needs.",
+                    "icon": "icon-comment-alt",
+                    "code": "tab2_sample",
+                    "color": "d15b47"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "55d345e4e4b07e45d5908f2b",
+              "name": "SF-12 Patient Questionaire",
+              "description": "EMA deployable version of the SF-12 patient questionaire",
+              "code": "98104",
+              "type": "survey",
+              "cards": 
+              [
+                {
+                  "card_type": "q_select",
+                  "section": 1,
+                  "order": 1,
+                  "data": {
+                    "title": "General Health Assessment",
+                    "text": "In general, would you say your health is:",
+                    "code": "93899",
+                    "options": 
+                    [
+                      {
+                        "value": "1",
+                        "text": "Excellent",
+                        "order": 1
+                      },
+                      {
+                        "value": "2",
+                        "text": "Very Good",
+                        "order": 2
+                      },
+                      {
+                        "value": "3",
+                        "text": "Good",
+                        "order": 3
+                      },
+                      {
+                        "value": "4",
+                        "text": "Fair",
+                        "order": 4
+                      },
+                      {
+                        "value": "5",
+                        "text": "Poor",
+                        "order": 5
+                      }
+                    ],
+                    "options_string": "1|Excellent\r\n2|Very Good\r\n3|Good\r\n4|Fair\r\n5|Poor"
+                  }
+                },
+                {
+                  "card_type": "instruction",
+                  "section": 2,
+                  "order": 1,
+                  "data": {
+                    "text": "The following two questions are about activities you might do during a typical day.  Does YOUR HEALTH NOW LIMIT YOU in these activities?  If so, how much?",
+                    "code": "08205"
+                  }
+                },
+                {
+                  "card_type": "q_select",
+                  "section": 2,
+                  "order": 2,
+                  "data": {
+                    "text": "MODERATE ACTIVITIES, such as moving a table, pushing a vacuum cleaner, bowling or playing golf:",
+                    "code": "01614",
+                    "options": 
+                    [
+                      {
+                        "value": "1",
+                        "text": "Yes, Limited A Lot",
+                        "order": 1
+                      },
+                      {
+                        "value": "2",
+                        "text": "Yes, Limited A Little",
+                        "order": 2
+                      },
+                      {
+                        "value": "3",
+                        "text": "No Not Limited At All",
+                        "order": 3
+                      }
+                    ],
+                    "options_string": "1|Yes, Limited A Lot\r\n2|Yes, Limited A Little\r\n3|No Not Limited At All"
+                  }
+                },
+                {
+                  "card_type": "q_select",
+                  "section": 2,
+                  "order": 3,
+                  "data": {
+                    "text": "Climbing SEVERAL flights of stairs:",
+                    "code": "64639",
+                    "options": 
+                    [
+                      {
+                        "value": "1",
+                        "text": "Yes, Limited A Lot",
+                        "order": 1
+                      },
+                      {
+                        "value": "2",
+                        "text": "Yes, Limited A Little",
+                        "order": 2
+                      },
+                      {
+                        "value": "3",
+                        "text": "No, Not Limited At All",
+                        "order": 3
+                      }
+                    ],
+                    "options_string": "1|Yes, Limited A Lot\r\n2|Yes, Limited A Little\r\n3|No, Not Limited At All"
+                  }
+                },
+                {
+                  "card_type": "instruction",
+                  "section": 3,
+                  "order": 1,
+                  "data": {
+                    "text": "During the PAST 4 WEEKS have you had any of the following problems with your work or other regular activities AS A RESULT OF YOUR PHYSICAL HEALTH?",
+                    "code": "14772"
+                  }
+                },
+                {
+                  "card_type": "q_select",
+                  "section": 3,
+                  "order": 2,
+                  "data": {
+                    "text": "ACCOMPLISHED LESS than you would like:",
+                    "code": "14289",
+                    "options": 
+                    [
+                      {
+                        "value": "1",
+                        "text": "Yes",
+                        "order": 1
+                      },
+                      {
+                        "value": "2",
+                        "text": "No",
+                        "order": 2
+                      }
+                    ],
+                    "options_string": "1|Yes\r\n2|No"
+                  }
+                },
+                {
+                  "card_type": "q_select",
+                  "section": 3,
+                  "order": 3,
+                  "data": {
+                    "text": "Were limited in the KIND of work or other activities:",
+                    "code": "17027",
+                    "options": 
+                    [
+                      {
+                        "value": "1",
+                        "text": "Yes",
+                        "order": 1
+                      },
+                      {
+                        "value": "2",
+                        "text": "No",
+                        "order": 2
+                      }
+                    ],
+                    "options_string": "1|Yes\r\n2|No"
+                  }
+                },
+                {
+                  "card_type": "instruction",
+                  "section": 4,
+                  "order": 1,
+                  "data": {
+                    "text": "During the PAST 4 WEEKS were you limited in the kind of work you could do or regular activities AS A RESULT OF ANY EMOTIONAL PROBLEMS (such as feeling depressed or anxious)?",
+                    "code": "47558"
+                  }
+                },
+                {
+                  "card_type": "q_select",
+                  "section": 4,
+                  "order": 2,
+                  "data": {
+                    "text": "ACCOMPLISHED LESS than you would like:",
+                    "code": "58256",
+                    "options": 
+                    [
+                      {
+                        "value": "1",
+                        "text": "Yes",
+                        "order": 1
+                      },
+                      {
+                        "value": "2",
+                        "text": "No",
+                        "order": 2
+                      }
+                    ],
+                    "options_string": "1|Yes\r\n2|No"
+                  }
+                },
+                {
+                  "card_type": "q_select",
+                  "section": 4,
+                  "order": 3,
+                  "data": {
+                    "text": "Didn't do work or other activities as CAREFULLY as usual:",
+                    "code": "76642",
+                    "options": 
+                    [
+                      {
+                        "value": "1",
+                        "text": "Yes",
+                        "order": 1
+                      },
+                      {
+                        "value": "2",
+                        "text": "No",
+                        "order": 2
+                      }
+                    ],
+                    "options_string": "1|Yes\r\n2|No"
+                  }
+                },
+                {
+                  "card_type": "q_select",
+                  "section": 4,
+                  "order": 4,
+                  "data": {
+                    "text": "During the PAST 4 WEEKS, how much did PAIN interfere with your normal work (including both work outside the home and housework)?",
+                    "code": "31324",
+                    "options": 
+                    [
+                      {
+                        "value": "1",
+                        "text": "Not At All",
+                        "order": 1
+                      },
+                      {
+                        "value": "2",
+                        "text": "A Little Bit",
+                        "order": 2
+                      },
+                      {
+                        "value": "3",
+                        "text": "Moderately",
+                        "order": 3
+                      },
+                      {
+                        "value": "4",
+                        "text": "Quite A Bit",
+                        "order": 4
+                      },
+                      {
+                        "value": "5",
+                        "text": "Extremely",
+                        "order": 5
+                      }
+                    ],
+                    "options_string": "1|Not At All\r\n2|A Little Bit\r\n3|Moderately\r\n4|Quite A Bit\r\n5|Extremely"
+                  }
+                },
+                {
+                  "card_type": "instruction",
+                  "section": 5,
+                  "order": 1,
+                  "data": {
+                    "text": "The next three questions are about how you feel and how things have been DURING THE PAST 4 WEEKS.  For each question, please give the one answer that comes closest to the way you have been feeling.  How much of the time during the PAST 4 WEEKS --",
+                    "code": "93341"
+                  }
+                },
+                {
+                  "card_type": "q_select",
+                  "section": 5,
+                  "order": 2,
+                  "data": {
+                    "text": "Have you felt calm and peaceful?",
+                    "code": "93656",
+                    "options": 
+                    [
+                      {
+                        "value": "1",
+                        "text": "All of the Time",
+                        "order": 1
+                      },
+                      {
+                        "value": "2",
+                        "text": "Most of the Time",
+                        "order": 2
+                      },
+                      {
+                        "value": "3",
+                        "text": "A Good Bit of the Time",
+                        "order": 3
+                      },
+                      {
+                        "value": "4",
+                        "text": "Some of the Time",
+                        "order": 4
+                      },
+                      {
+                        "value": "5",
+                        "text": "A Little of the Time",
+                        "order": 5
+                      },
+                      {
+                        "value": "6",
+                        "text": "None of the Time",
+                        "order": 6
+                      }
+                    ],
+                    "options_string": "1|All of the Time\r\n2|Most of the Time\r\n3|A Good Bit of the Time\r\n4|Some of the Time\r\n5|A Little of the Time\r\n6|None of the Time"
+                  }
+                },
+                {
+                  "card_type": "q_select",
+                  "section": 5,
+                  "order": 3,
+                  "data": {
+                    "text": "Did you have a lot of energy?",
+                    "code": "53290",
+                    "options": 
+                    [
+                      {
+                        "value": "1",
+                        "text": "All of the Time",
+                        "order": 1
+                      },
+                      {
+                        "value": "2",
+                        "text": "Most of the Time",
+                        "order": 2
+                      },
+                      {
+                        "value": "3",
+                        "text": "A Good Bit of the Time",
+                        "order": 3
+                      },
+                      {
+                        "value": "4",
+                        "text": "Some of the Time",
+                        "order": 4
+                      },
+                      {
+                        "value": "5",
+                        "text": "A Little of the Time",
+                        "order": 5
+                      },
+                      {
+                        "value": "6",
+                        "text": "None of the Time",
+                        "order": 6
+                      }
+                    ],
+                    "options_string": "1|All of the Time\r\n2|Most of the Time\r\n3|A Good Bit of the Time\r\n4|Some of the Time\r\n5|A Little of the Time\r\n6|None of the Time"
+                  }
+                },
+                {
+                  "card_type": "q_select",
+                  "section": 5,
+                  "order": 4,
+                  "data": {
+                    "text": "Have you felt downhearted and blue?",
+                    "code": "08920",
+                    "options": 
+                    [
+                      {
+                        "value": "1",
+                        "text": "All of the Time",
+                        "order": 1
+                      },
+                      {
+                        "value": "2",
+                        "text": "Most of the Time",
+                        "order": 2
+                      },
+                      {
+                        "value": "3",
+                        "text": "A Good Bit of the Time",
+                        "order": 3
+                      },
+                      {
+                        "value": "4",
+                        "text": "Some of the Time",
+                        "order": 4
+                      },
+                      {
+                        "value": "5",
+                        "text": "A Little of the Time",
+                        "order": 5
+                      },
+                      {
+                        "value": "6",
+                        "text": "None of the Time",
+                        "order": 6
+                      }
+                    ],
+                    "options_string": "1|All of the Time\r\n2|Most of the Time\r\n3|A Good Bit of the Time\r\n4|Some of the Time\r\n5|A Little of the Time\r\n6|None of the Time"
+                  }
+                },
+                {
+                  "card_type": "q_select",
+                  "section": 6,
+                  "order": 1,
+                  "data": {
+                    "text": "During the PAST 4 WEEKS, how much of the time has your PHYSICAL HEALTH OR EMOTIONAL PROBLEMS interfered with your social activities (like visiting with friends, relatives, etc.)?",
+                    "code": "47963",
+                    "options": 
+                    [
+                      {
+                        "value": "1",
+                        "text": "All of the Time",
+                        "order": 1
+                      },
+                      {
+                        "value": "2",
+                        "text": "Most of the Time",
+                        "order": 2
+                      },
+                      {
+                        "value": "3",
+                        "text": "A Good Bit of the Time",
+                        "order": 3
+                      },
+                      {
+                        "value": "4",
+                        "text": "Some of the Time",
+                        "order": 4
+                      },
+                      {
+                        "value": "5",
+                        "text": "A Little of the Time",
+                        "order": 5
+                      },
+                      {
+                        "value": "6",
+                        "text": "None of the Time",
+                        "order": 6
+                      }
+                    ],
+                    "options_string": "1|All of the Time\r\n2|Most of the Time\r\n3|A Good Bit of the Time\r\n4|Some of the Time\r\n5|A Little of the Time\r\n6|None of the Time"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "55d3754ce4b05b7d952c6205",
+              "name": "Personal Health Questionaire Depression Scale (PHQ-8)",
+              "description": "EMA delivered version of the Stanford PHQ-8",
+              "code": "85488",
+              "type": "survey",
+              "cards": 
+              [
+                {
+                  "card_type": "instruction",
+                  "section": 1,
+                  "order": 1,
+                  "data": {
+                    "title": "Instructions",
+                    "text": "Over the last 2 weeks, how often have you been bothered by any of the following problems (select one response)",
+                    "code": "07113"
+                  }
+                },
+                {
+                  "card_type": "q_select",
+                  "section": 1,
+                  "order": 2,
+                  "data": {
+                    "text": "Little interest or pleasure in doing things",
+                    "code": "04924",
+                    "options": 
+                    [
+                      {
+                        "value": "0",
+                        "text": "Not at all",
+                        "order": 1
+                      },
+                      {
+                        "value": "1",
+                        "text": "Several days",
+                        "order": 2
+                      },
+                      {
+                        "value": "2",
+                        "text": "More than half the days",
+                        "order": 3
+                      },
+                      {
+                        "value": "3",
+                        "text": "Nearly every day",
+                        "order": 4
+                      }
+                    ],
+                    "options_string": "0|Not at all\r\n1|Several days\r\n2|More than half the days\r\n3|Nearly every day"
+                  }
+                },
+                {
+                  "card_type": "q_select",
+                  "section": 1,
+                  "order": 3,
+                  "data": {
+                    "text": "Feeling, down, depressed, or hopeless",
+                    "code": "48463",
+                    "options": 
+                    [
+                      {
+                        "value": "0",
+                        "text": "Not at all",
+                        "order": 1
+                      },
+                      {
+                        "value": "1",
+                        "text": "Several days",
+                        "order": 2
+                      },
+                      {
+                        "value": "2",
+                        "text": "More than half the days",
+                        "order": 3
+                      },
+                      {
+                        "value": "3",
+                        "text": "Nearly every day",
+                        "order": 4
+                      }
+                    ],
+                    "options_string": "0|Not at all\r\n1|Several days\r\n2|More than half the days\r\n3|Nearly every day"
+                  }
+                },
+                {
+                  "card_type": "q_select",
+                  "section": 1,
+                  "order": 4,
+                  "data": {
+                    "text": "Trouble falling or staying asleep, or sleeping too much",
+                    "code": "57957",
+                    "options": 
+                    [
+                      {
+                        "value": "0",
+                        "text": "Not at all",
+                        "order": 1
+                      },
+                      {
+                        "value": "1",
+                        "text": "Several days",
+                        "order": 2
+                      },
+                      {
+                        "value": "2",
+                        "text": "More than half the days",
+                        "order": 3
+                      },
+                      {
+                        "value": "3",
+                        "text": "Nearly every day",
+                        "order": 4
+                      }
+                    ],
+                    "options_string": "0|Not at all\r\n1|Several days\r\n2|More than half the days\r\n3|Nearly every day"
+                  }
+                },
+                {
+                  "card_type": "q_select",
+                  "section": 1,
+                  "order": 5,
+                  "data": {
+                    "text": "Feeling tired or having little energy",
+                    "code": "70372",
+                    "options": 
+                    [
+                      {
+                        "value": "0",
+                        "text": "Not at all",
+                        "order": 1
+                      },
+                      {
+                        "value": "1",
+                        "text": "Several days",
+                        "order": 2
+                      },
+                      {
+                        "value": "2",
+                        "text": "More than half the days",
+                        "order": 3
+                      },
+                      {
+                        "value": "3",
+                        "text": "Nearly every day",
+                        "order": 4
+                      }
+                    ],
+                    "options_string": "0|Not at all\r\n1|Several days\r\n2|More than half the days\r\n3|Nearly every day"
+                  }
+                },
+                {
+                  "card_type": "q_select",
+                  "section": 1,
+                  "order": 6,
+                  "data": {
+                    "text": "Poor appetite or overeating",
+                    "code": "63969",
+                    "options": 
+                    [
+                      {
+                        "value": "0",
+                        "text": "Not at all",
+                        "order": 1
+                      },
+                      {
+                        "value": "1",
+                        "text": "Several days",
+                        "order": 2
+                      },
+                      {
+                        "value": "2",
+                        "text": "More than half the days",
+                        "order": 3
+                      },
+                      {
+                        "value": "3",
+                        "text": "Nearly every day",
+                        "order": 4
+                      }
+                    ],
+                    "options_string": "0|Not at all\r\n1|Several days\r\n2|More than half the days\r\n3|Nearly every day"
+                  }
+                },
+                {
+                  "card_type": "q_select",
+                  "section": 1,
+                  "order": 7,
+                  "data": {
+                    "text": "Feeling bad about yourself, or that you are a failure, or have let yourself or your family down",
+                    "code": "13714",
+                    "options": 
+                    [
+                      {
+                        "value": "0",
+                        "text": "Not at all",
+                        "order": 1
+                      },
+                      {
+                        "value": "1",
+                        "text": "Several days",
+                        "order": 2
+                      },
+                      {
+                        "value": "2",
+                        "text": "More than half the days",
+                        "order": 3
+                      },
+                      {
+                        "value": "3",
+                        "text": "Nearly every day",
+                        "order": 4
+                      }
+                    ],
+                    "options_string": "0|Not at all\r\n1|Several days\r\n2|More than half the days\r\n3|Nearly every day"
+                  }
+                },
+                {
+                  "card_type": "q_select",
+                  "section": 1,
+                  "order": 8,
+                  "data": {
+                    "text": "Trouble concentrating on things, such as reading the newspaper or watching television",
+                    "code": "77763",
+                    "options": 
+                    [
+                      {
+                        "value": "0",
+                        "text": "Not at all",
+                        "order": 1
+                      },
+                      {
+                        "value": "1",
+                        "text": "Several days",
+                        "order": 2
+                      },
+                      {
+                        "value": "2",
+                        "text": "More than half the days",
+                        "order": 3
+                      },
+                      {
+                        "value": "3",
+                        "text": "Nearly every day",
+                        "order": 4
+                      }
+                    ],
+                    "options_string": "0|Not at all\r\n1|Several days\r\n2|More than half the days\r\n3|Nearly every day"
+                  }
+                },
+                {
+                  "card_type": "q_select",
+                  "section": 1,
+                  "order": 9,
+                  "data": {
+                    "text": "Moving or speaking so slowly that other people could have noticed.  Or the opposite -- being so fidgety or restless that you have been moving around a lot more than usual",
+                    "code": "38271",
+                    "options": 
+                    [
+                      {
+                        "value": "0",
+                        "text": "Not at all",
+                        "order": 1
+                      },
+                      {
+                        "value": "1",
+                        "text": "Several days",
+                        "order": 2
+                      },
+                      {
+                        "value": "2",
+                        "text": "More than half the days",
+                        "order": 3
+                      },
+                      {
+                        "value": "3",
+                        "text": "Nearly every day",
+                        "order": 4
+                      }
+                    ],
+                    "options_string": "0|Not at all\r\n1|Several days\r\n2|More than half the days\r\n3|Nearly every day"
+                  }
+                }
+              ]
+            }
+          ],
+          "trigger_criteria": 
+          [
+          ]
+        }
+      ]
+    }
+  ]
+}
