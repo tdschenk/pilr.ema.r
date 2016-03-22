@@ -4,5 +4,5 @@ Version: 0.0.0.9000
 Authors@R: c(person("Tyler Schenk", "Developer", role = c("aut", "cre"),
 		     email = "tschenk@meinergy.com"))
 Description: Contains various functions used to generate PiLR dashboards with EMA data.
-Depends: R (>= 3.2.1), plyr, ggvis, leaflet, htmltools, xtable
+Depends: R (>= 3.2.1), plyr, ggvis, leaflet, xtable
 LazyData: true
